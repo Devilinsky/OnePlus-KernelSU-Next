@@ -1,4 +1,4 @@
-name: Build KernelSU Next SUSFS
+name: Ace3V A15 KernelSU Next SUSFS
 on:
   workflow_dispatch:
     inputs:
