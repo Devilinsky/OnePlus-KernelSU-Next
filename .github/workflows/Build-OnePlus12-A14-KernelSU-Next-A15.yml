@@ -26,12 +26,12 @@ on:
         description: "添加 KSU Next"
         required: true
         type: boolean
-        default: false
+        default: true
       SUSFS_ENABLED:
         description: "添加 SUSFS"
         required: true
         type: boolean
-        default: false
+        default: true
       SUSFS_VERSION:
         description: "SUSFS 版本"
         required: true
