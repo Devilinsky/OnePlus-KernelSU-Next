@@ -81,7 +81,7 @@ jobs:
         if: github.event.inputs.KSUNEXT_ENABLED == 'true'
         run: |
          cd kernel_workspace/kernel_platform
-         curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs
+         curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next
          cd KernelSU-Next
          KSU_VERSION=$(expr $(/usr/bin/git rev-list --count HEAD) "+" 10200)
          echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
@@ -102,8 +102,8 @@ jobs:
            # Apply patches
            cd ./KernelSU-Next
            # patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
-           # cp ../../kernel_patches/KernelSU-Next-Implement-SUSFS-${{ github.event.inputs.SUSFS_VERSION }}-Universal.patch ./
-           # patch -p1 < KernelSU-Next-Implement-SUSFS-${{ github.event.inputs.SUSFS_VERSION }}-Universal.patch || true
+           cp ../../kernel_patches/KernelSU-Next-Implement-SUSFS-${{ github.event.inputs.SUSFS_VERSION }}-Universal.patch ./
+           patch -p1 < KernelSU-Next-Implement-SUSFS-${{ github.event.inputs.SUSFS_VERSION }}-Universal.patch || true
            
            cd ../common
            patch -p1 < 50_add_susfs_in_gki-${{ github.event.inputs.ANDROID_VERSION }}-${{ github.event.inputs.KERNEL_VERSION }}.patch || true
